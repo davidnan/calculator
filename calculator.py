@@ -32,15 +32,19 @@ def clearButtonFunc():
 	global equation
 	global floatNumber
 	global rez
+	global rezultLabel
+	global bClear
 	floatNumber = False
-	if bClear.cget('text') == 'C' and equation != '':
-		bClear.configure(text='AC')
+	print(equation)
+	if bClear.cget('text') == 'C' and rez != '':
+		print(bClear.cget('text'))
+		bClear.configure(text="AC")
 		resetEquation()
 		buttonReset()
 		sign = ''
-	if bClear.cget('text') == 'AC':
+	elif bClear.cget('text') == 'AC':
 		rez = None
-	if equation != '':
+	elif equation == '':
 		bClear.configure(text="C")
 	rezultLabel['text'] = equation
 
@@ -118,7 +122,10 @@ def enterFunction():
 		if equation != '':
 			rez = rez / float(equation)
 			resetEquation()
-	rezultLabel['text'] = str(rez)
+	if rez == None:
+		rezultLabel['text'] = 0
+	else:
+		rezultLabel['text'] = str(rez)
 	operation = ''
 
 def plusFunction():
@@ -136,7 +143,8 @@ def plusFunction():
 	elif rez == None:
 		if equation == '':
 			rez = 0
-		rez = float(equation)
+		else: 
+			rez = float(equation)
 		rezultLabel['text'] = ''
 		resetEquation()
 	else:
@@ -158,7 +166,8 @@ def minusFunction():
 	elif rez == None:
 		if equation == '':
 			rez = 0
-		rez = float(equation)
+		else: 
+			rez = float(equation)
 		rezultLabel['text'] = ''
 		resetEquation()
 	else:
@@ -180,7 +189,8 @@ def divideFunction():
 	elif rez == None:
 		if equation == '':
 			rez = 0
-		rez = float(equation)
+		else: 
+			rez = float(equation)
 		rezultLabel['text'] = ''
 		resetEquation()
 	else:
@@ -202,7 +212,8 @@ def multiplyFunction():
 	elif rez == None:
 		if equation == '':
 			rez = 0
-		rez = float(equation)
+		else: 
+			rez = float(equation)
 		rezultLabel['text'] = ''
 		resetEquation()
 	else:
